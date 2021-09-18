@@ -2,13 +2,15 @@ import graphene
 
 from link_aggregator.core.mutations import Mutation as LinkMutation
 from link_aggregator.core.schema import Query as LinkQuery
+from link_aggregator.users.mutations import Mutation as UserMutation
+from link_aggregator.users.schema import Query as UserQuery
 
 
-class Query(LinkQuery, graphene.ObjectType):
+class Query(LinkQuery, UserQuery, graphene.ObjectType):
     pass
 
 
-class Mutation(LinkMutation, graphene.ObjectType):
+class Mutation(LinkMutation, UserMutation, graphene.ObjectType):
     pass
 
 
