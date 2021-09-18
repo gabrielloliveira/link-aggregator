@@ -1,7 +1,9 @@
 import graphene
 
+from link_aggregator.core.schema import Query as LinkQuery
 
-class Query(graphene.ObjectType):
+
+class Query(LinkQuery, graphene.ObjectType):
     pass
 
 
