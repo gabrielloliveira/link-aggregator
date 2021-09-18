@@ -1,4 +1,5 @@
 import graphene
+import graphql_jwt
 
 from link_aggregator.core.mutations import Mutation as LinkMutation
 from link_aggregator.core.schema import Query as LinkQuery
@@ -11,7 +12,9 @@ class Query(LinkQuery, UserQuery, graphene.ObjectType):
 
 
 class Mutation(LinkMutation, UserMutation, graphene.ObjectType):
-    pass
+    token_auth = graphql_jwt.ObtainJSONWebToken.Field()
+    verify_token = graphql_jwt.Verify.Field()
+    refresh_token = graphql_jwt.Refresh.Field()
 
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
